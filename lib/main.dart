@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movieflix/HomePage.dart';
-import 'package:movieflix/SearchPage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:movieflix/UI/HomePage.dart';
+import 'package:movieflix/UI/SearchPage.dart';
 
 void main() {
   runApp(const MaterialApp(home: MainContainer()));
@@ -19,6 +20,16 @@ class _MainContainerState extends State<MainContainer> {
   int currentIndex = 0;
   PageController pageController = PageController(initialPage: 0);
 
+  void navigateToSearch() {
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(content: Text('clicked')),
+    // );
+    setState(() {
+      currentIndex = 1;
+    });
+    pageController.animateToPage(1, duration: const Duration(milliseconds: 500), curve: Curves.ease);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +41,7 @@ class _MainContainerState extends State<MainContainer> {
           });
         },
         children: [
-          Homepage(),
+          Homepage(onSearchButtonPressed: navigateToSearch),
           Searchpage()
         ],
       ),

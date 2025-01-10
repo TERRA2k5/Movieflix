@@ -31,6 +31,13 @@ dependencies:
   flutter:
     sdk: flutter
 
+  carousel_slider: ^5.0.0
+  http: ^1.2.2
+  fluttertoast: ^8.2.10
+  flutter_hooks: ^0.20.5
+  flutter_native_splash: ^2.4.4
+  flutter_launcher_icons: ^0.14.2
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -60,8 +67,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/netflix.png
-#  - images/a_dot_ham.jpeg
+    - images/MOVIEFLIX.png
+    - images/NoResult.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -88,3 +95,23 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_native_splash:
+  color: "#000000" # Background color
+  branding: images/MOVIEFLIX.png # Your logo path
+  android: true
+  ios: true
+  web: true
+  android_12:
+    color: "#000000" # Background color
+    branding: images/MOVIEFLIX.png # Your logo path
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/M.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "images/M.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
