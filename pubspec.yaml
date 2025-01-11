@@ -37,6 +37,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   flutter_native_splash: ^2.4.4
   flutter_launcher_icons: ^0.14.2
+  url_launcher: ^6.3.1
 
 
   # The following adds the Cupertino Icons font to your application.

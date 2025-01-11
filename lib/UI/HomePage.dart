@@ -251,10 +251,10 @@ class _HomepageState extends State<Homepage> {
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         itemBuilder: (_, index) {
-          final movie = list[index];
+          final movie = list[index]['show'];
           return GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Detailpage(listItem: movie)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Detailpage(show: movie)));
             },
             child: _buildGridTile(list, index));
         },

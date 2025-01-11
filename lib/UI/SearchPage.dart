@@ -19,7 +19,7 @@ class _SearchpageState extends State<Searchpage> {
   final searchController = TextEditingController();
 
   Future<void> searchApi(String query) async {
-    if(query == ""){
+    if(query == "" || query.isEmpty){
       setState(() {
         searchResult = [];  // Update result with the API response
       });
@@ -32,7 +32,7 @@ class _SearchpageState extends State<Searchpage> {
       setState(() {
         searchResult = data;  // Update result with the API response
       });
-      print("response is " + data.toString());
+      // print("response is " + data.toString());
     } else {
       setState(() {
         searchResult = [];  // In case of error, clear the list
@@ -82,10 +82,10 @@ class _SearchpageState extends State<Searchpage> {
                 ),
                 itemCount: searchResult.length,
                 itemBuilder: (context, index) {
-                  final movie = searchResult[index];
+                  final movie = searchResult[index]['show'];
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Detailpage(listItem: movie)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Detailpage(show: movie)));
                     },
                     child: _buildGridTile(index)
                   );
