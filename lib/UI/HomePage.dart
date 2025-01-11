@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -38,6 +39,15 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> fetchAll() async {
+
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      setState(() {
+        isLoading = false;
+      });
+      return;
+    }
+
     const allUrl = 'https://api.tvmaze.com/search/shows?q=all';
     try {
       final response = await http.get(Uri.parse(allUrl));
@@ -87,7 +97,7 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: isLoading
-          ? const Center(child: CircularProgressIndicator(color: Colors.grey,))
+          ? Center(child: Column(mainAxisSize: MainAxisSize.min ,children: [const CircularProgressIndicator(color: Colors.grey,), SizedBox(height: 70,), SizedBox(width: 300, child: Image.asset('images/network.png'),)],))
           : CustomScrollView(
               slivers: [
                 SliverAppBar(

@@ -56,6 +56,7 @@ class _SearchpageState extends State<Searchpage> {
               padding: const EdgeInsets.all(16),
               child: TextField(
                 controller: searchController,
+                autofocus: true,
                 onChanged: (query) => searchApi(query),
                 onSubmitted: (query) => searchApi(query),
                 decoration: const InputDecoration(
